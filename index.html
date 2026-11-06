@@ -1,0 +1,1521 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>OCD — Communauté, Lives & Opportunités</title>
+<meta name="description" content="OCD connecte les prestataires de services aux clients grâce à des lives exclusifs diffusés avec House of Challenge. Abonne-toi, présente ton service, reçois tes clients sur WhatsApp." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ============ 1. BASE ============ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0A0A12;
+  --bg-2:#0F0F1C;
+  --card:#14142250;
+  --card-solid:#151527;
+  --border:rgba(255,255,255,.08);
+  --border-strong:rgba(255,255,255,.16);
+  --text:#F4F4FA;
+  --muted:#9A9AB5;
+  --primary:#FF6B35;
+  --primary-2:#FF9E45;
+  --accent:#7C5CFF;
+  --green:#25D366;
+  --radius:20px;
+  --radius-sm:12px;
+  --shadow:0 20px 60px -20px rgba(0,0,0,.8);
+  --grad:linear-gradient(135deg,#FF6B35 0%,#FF9E45 50%,#FFB25C 100%);
+  --grad-accent:linear-gradient(135deg,#7C5CFF 0%,#B45CFF 100%);
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Plus Jakarta Sans',system-ui,-apple-system,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.6;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit;color:inherit}
+::selection{background:var(--primary);color:#0A0A12}
+
+/* ============ 2. UTILITAIRES ============ */
+.container{width:100%;max-width:1180px;margin:0 auto;padding:0 20px}
+.section{padding:clamp(64px,9vw,120px) 0;position:relative}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:.75rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--primary);
+  background:rgba(255,107,53,.1);
+  border:1px solid rgba(255,107,53,.25);
+  padding:8px 16px;border-radius:100px;margin-bottom:20px;
+}
+.eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--primary);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.4)}}
+h1,h2,h3{line-height:1.15;letter-spacing:-.02em;font-weight:800}
+h2{font-size:clamp(1.85rem,4.5vw,3rem);margin-bottom:16px}
+.lead{color:var(--muted);font-size:clamp(1rem,1.6vw,1.15rem);max-width:620px}
+.gradient-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.section-head{max-width:680px;margin-bottom:56px}
+.section-head.center{margin-left:auto;margin-right:auto;text-align:center}
+.section-head.center .lead{margin:0 auto}
+
+/* Boutons */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  padding:15px 28px;border-radius:100px;font-weight:700;font-size:.95rem;
+  border:none;cursor:pointer;transition:.25s cubic-bezier(.4,0,.2,1);
+  white-space:nowrap;position:relative;overflow:hidden;
+}
+.btn-primary{background:var(--grad);color:#140A02;box-shadow:0 10px 30px -8px rgba(255,107,53,.6)}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 18px 40px -10px rgba(255,107,53,.75)}
+.btn-ghost{background:rgba(255,255,255,.05);color:var(--text);border:1px solid var(--border-strong)}
+.btn-ghost:hover{background:rgba(255,255,255,.1);transform:translateY(-3px)}
+.btn-wa{background:var(--green);color:#04220F;box-shadow:0 10px 30px -8px rgba(37,211,102,.5)}
+.btn-wa:hover{transform:translateY(-3px);box-shadow:0 18px 40px -10px rgba(37,211,102,.7)}
+.btn-block{width:100%}
+.btn-sm{padding:11px 20px;font-size:.85rem}
+
+/* ============ 3. HEADER ============ */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:900;
+  padding:16px 0;transition:.3s;
+  border-bottom:1px solid transparent;
+}
+header.scrolled{
+  background:rgba(10,10,18,.82);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border-bottom-color:var(--border);
+  padding:10px 0;
+}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.35rem;letter-spacing:-.03em}
+.logo-mark{
+  width:38px;height:38px;border-radius:11px;background:var(--grad);
+  display:grid;place-items:center;color:#140A02;font-size:1.05rem;font-weight:800;
+  box-shadow:0 8px 20px -6px rgba(255,107,53,.6);
+}
+.nav-links{display:flex;align-items:center;gap:6px;list-style:none}
+.nav-links a{
+  padding:9px 15px;border-radius:100px;font-size:.9rem;font-weight:600;
+  color:var(--muted);transition:.2s;
+}
+.nav-links a:hover{color:var(--text);background:rgba(255,255,255,.06)}
+.nav-actions{display:flex;align-items:center;gap:10px}
+.burger{
+  display:none;width:44px;height:44px;border-radius:12px;
+  background:rgba(255,255,255,.06);border:1px solid var(--border);
+  cursor:pointer;place-items:center;
+}
+.burger span{display:block;width:20px;height:2px;background:var(--text);border-radius:2px;transition:.3s;position:relative}
+.burger span::before,.burger span::after{
+  content:'';position:absolute;left:0;width:20px;height:2px;background:var(--text);border-radius:2px;transition:.3s;
+}
+.burger span::before{top:-6px}.burger span::after{top:6px}
+.burger.active span{background:transparent}
+.burger.active span::before{top:0;transform:rotate(45deg)}
+.burger.active span::after{top:0;transform:rotate(-45deg)}
+
+.mobile-menu{
+  position:fixed;inset:0;z-index:890;background:rgba(10,10,18,.98);
+  backdrop-filter:blur(20px);
+  display:flex;flex-direction:column;justify-content:center;align-items:center;gap:8px;
+  opacity:0;pointer-events:none;transition:.35s;
+}
+.mobile-menu.open{opacity:1;pointer-events:auto}
+.mobile-menu a{
+  font-size:1.5rem;font-weight:700;padding:14px 24px;border-radius:16px;color:var(--muted);transition:.2s;
+}
+.mobile-menu a:hover{color:var(--text);background:rgba(255,255,255,.05)}
+.mobile-menu .btn{margin-top:20px}
+
+/* ============ 4. HERO ============ */
+.hero{
+  position:relative;min-height:100vh;display:flex;align-items:center;
+  padding:140px 0 90px;overflow:hidden;
+}
+.hero-bg{position:absolute;inset:0;z-index:0;overflow:hidden}
+.blob{position:absolute;border-radius:50%;filter:blur(90px);opacity:.55}
+.blob-1{width:520px;height:520px;background:radial-gradient(circle,#FF6B35,transparent 70%);top:-160px;right:-120px;animation:float1 18s ease-in-out infinite}
+.blob-2{width:460px;height:460px;background:radial-gradient(circle,#7C5CFF,transparent 70%);bottom:-180px;left:-140px;animation:float2 22s ease-in-out infinite}
+.blob-3{width:320px;height:320px;background:radial-gradient(circle,#25D366,transparent 70%);top:40%;left:45%;opacity:.18;animation:float1 26s ease-in-out infinite reverse}
+@keyframes float1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-50px,60px) scale(1.12)}}
+@keyframes float2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(60px,-50px) scale(1.1)}}
+.hero-grid{
+  position:absolute;inset:0;z-index:0;
+  background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+  background-size:64px 64px;
+  mask-image:radial-gradient(ellipse 80% 60% at 50% 40%,#000 30%,transparent 75%);
+  -webkit-mask-image:radial-gradient(ellipse 80% 60% at 50% 40%,#000 30%,transparent 75%);
+}
+.hero-inner{position:relative;z-index:2;max-width:860px}
+.hero h1{
+  font-size:clamp(2.3rem,6.4vw,4.4rem);
+  margin-bottom:24px;letter-spacing:-.035em;
+}
+.hero .lead{font-size:clamp(1.02rem,1.9vw,1.22rem);max-width:660px;margin-bottom:36px}
+.hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:56px}
+.hero-stats{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:20px;
+  max-width:620px;
+}
+.stat{padding:22px 20px;border-radius:var(--radius);background:var(--card);border:1px solid var(--border);backdrop-filter:blur(14px)}
+.stat b{display:block;font-size:clamp(1.4rem,3.2vw,2rem);font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1.1}
+.stat span{font-size:.8rem;color:var(--muted);font-weight:600}
+
+/* ============ 5. MARQUEE ============ */
+.marquee{
+  overflow:hidden;border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+  padding:22px 0;background:rgba(255,255,255,.015);
+  mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);
+}
+.marquee-track{display:flex;gap:56px;width:max-content;animation:scroll 32s linear infinite}
+.marquee:hover .marquee-track{animation-play-state:paused}
+@keyframes scroll{to{transform:translateX(-50%)}}
+.marquee-item{
+  display:flex;align-items:center;gap:12px;font-weight:700;font-size:1rem;
+  color:var(--muted);white-space:nowrap;letter-spacing:.02em;
+}
+.marquee-item .ic{width:30px;height:30px;border-radius:9px;background:rgba(255,107,53,.14);display:grid;place-items:center;color:var(--primary);font-size:.85rem}
+
+/* ============ 6. COMMENT ÇA MARCHE ============ */
+.tabs{display:flex;gap:8px;background:rgba(255,255,255,.04);border:1px solid var(--border);padding:6px;border-radius:100px;width:max-content;margin-bottom:44px}
+.tab{
+  padding:12px 26px;border-radius:100px;border:none;background:transparent;
+  color:var(--muted);font-weight:700;font-size:.9rem;cursor:pointer;transition:.25s;
+}
+.tab.active{background:var(--grad);color:#140A02;box-shadow:0 8px 20px -8px rgba(255,107,53,.7)}
+.tab-panel{display:none}
+.tab-panel.active{display:block;animation:fadeUp .5s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.step{
+  padding:32px 28px;border-radius:var(--radius);
+  background:var(--card);border:1px solid var(--border);backdrop-filter:blur(14px);
+  position:relative;transition:.3s;
+}
+.step:hover{transform:translateY(-6px);border-color:rgba(255,107,53,.35);box-shadow:var(--shadow)}
+.step-num{
+  width:46px;height:46px;border-radius:14px;display:grid;place-items:center;
+  font-weight:800;font-size:1.1rem;margin-bottom:22px;
+  background:rgba(255,107,53,.12);color:var(--primary);border:1px solid rgba(255,107,53,.25);
+}
+.step h3{font-size:1.12rem;margin-bottom:10px}
+.step p{color:var(--muted);font-size:.93rem}
+
+/* ============ 7. ABONNEMENTS ============ */
+.pricing-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;align-items:stretch}
+.plan{
+  padding:34px 26px;border-radius:var(--radius);
+  background:var(--card);border:1px solid var(--border);backdrop-filter:blur(14px);
+  display:flex;flex-direction:column;position:relative;transition:.3s;
+}
+.plan:hover{transform:translateY(-6px);border-color:var(--border-strong)}
+.plan.featured{
+  background:linear-gradient(180deg,rgba(255,107,53,.14),rgba(20,20,34,.9));
+  border-color:rgba(255,107,53,.45);
+  box-shadow:0 24px 60px -24px rgba(255,107,53,.5);
+}
+.plan.featured:hover{transform:translateY(-10px)}
+.plan-tag{
+  position:absolute;top:-13px;left:50%;transform:translateX(-50%);
+  background:var(--grad);color:#140A02;font-size:.7rem;font-weight:800;
+  letter-spacing:.08em;text-transform:uppercase;padding:6px 16px;border-radius:100px;
+  box-shadow:0 8px 20px -8px rgba(255,107,53,.8);white-space:nowrap;
+}
+.plan-name{font-size:.8rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.plan-price{display:flex;align-items:baseline;gap:6px;margin-bottom:6px}
+.plan-price b{font-size:clamp(1.7rem,3vw,2.2rem);font-weight:800;letter-spacing:-.03em}
+.plan-price span{font-size:.85rem;color:var(--muted);font-weight:600}
+.plan-sub{font-size:.82rem;color:var(--muted);margin-bottom:24px;padding-bottom:24px;border-bottom:1px solid var(--border)}
+.plan ul{list-style:none;display:flex;flex-direction:column;gap:12px;margin-bottom:28px;flex:1}
+.plan li{display:flex;gap:10px;font-size:.88rem;color:var(--muted);align-items:flex-start}
+.plan li svg{flex-shrink:0;margin-top:3px;color:var(--primary)}
+.plan.featured li svg{color:var(--primary-2)}
+.note{text-align:center;color:var(--muted);font-size:.86rem;margin-top:32px}
+.note strong{color:var(--text)}
+
+/* ============ 8. LIVES ============ */
+.lives-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:28px;align-items:start}
+.live-list{display:flex;flex-direction:column;gap:14px}
+.live-item{
+  display:flex;gap:18px;align-items:center;padding:20px;
+  border-radius:var(--radius);background:var(--card);border:1px solid var(--border);
+  transition:.25s;backdrop-filter:blur(14px);
+}
+.live-item:hover{border-color:rgba(255,107,53,.4);transform:translateX(6px)}
+.live-date{
+  flex-shrink:0;width:64px;height:64px;border-radius:16px;
+  background:rgba(255,107,53,.1);border:1px solid rgba(255,107,53,.25);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  line-height:1;
+}
+.live-date b{font-size:1.35rem;font-weight:800;color:var(--primary)}
+.live-date span{font-size:.62rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-top:4px}
+.live-info h4{font-size:1rem;margin-bottom:5px;font-weight:700}
+.live-info p{font-size:.83rem;color:var(--muted);display:flex;gap:12px;flex-wrap:wrap}
+.live-info p span{display:inline-flex;align-items:center;gap:5px}
+.live-badge{margin-left:auto;flex-shrink:0}
+.badge-live{
+  font-size:.68rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+  padding:6px 12px;border-radius:100px;background:rgba(37,211,102,.14);color:var(--green);
+  border:1px solid rgba(37,211,102,.3);display:inline-flex;align-items:center;gap:6px;
+}
+.badge-live::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 1.6s infinite}
+
+.replays{display:flex;flex-direction:column;gap:14px}
+.replay{
+  padding:22px;border-radius:var(--radius);background:var(--card);border:1px solid var(--border);
+  display:flex;gap:16px;align-items:center;transition:.25s;cursor:pointer;
+}
+.replay:hover{border-color:var(--border-strong);background:rgba(255,255,255,.05)}
+.play-btn{
+  flex-shrink:0;width:46px;height:46px;border-radius:50%;
+  background:var(--grad-accent);display:grid;place-items:center;color:#fff;
+  box-shadow:0 8px 22px -8px rgba(124,92,255,.7);
+}
+.replay h4{font-size:.92rem;font-weight:700;margin-bottom:4px}
+.replay p{font-size:.78rem;color:var(--muted)}
+
+/* ============ 9. À PROPOS ============ */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.about-visual{position:relative}
+.about-card{
+  padding:34px;border-radius:var(--radius);
+  background:linear-gradient(160deg,rgba(255,107,53,.14),rgba(124,92,255,.1));
+  border:1px solid var(--border-strong);backdrop-filter:blur(14px);
+}
+.about-card h4{font-size:1.05rem;margin-bottom:6px}
+.about-card p{font-size:.88rem;color:var(--muted)}
+.partner{display:flex;align-items:center;gap:14px;padding:16px 0;border-bottom:1px solid var(--border)}
+.partner:last-child{border-bottom:none;padding-bottom:0}
+.partner:first-child{padding-top:0}
+.partner-ic{
+  width:44px;height:44px;border-radius:12px;display:grid;place-items:center;
+  background:rgba(255,255,255,.07);border:1px solid var(--border);font-weight:800;color:var(--primary);flex-shrink:0;
+}
+.about-text p{color:var(--muted);margin-bottom:18px;font-size:.97rem}
+.about-text p strong{color:var(--text)}
+
+/* ============ 10. TÉMOIGNAGES ============ */
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.testi{
+  padding:30px;border-radius:var(--radius);background:var(--card);border:1px solid var(--border);
+  backdrop-filter:blur(14px);transition:.3s;display:flex;flex-direction:column;
+}
+.testi:hover{transform:translateY(-6px);border-color:rgba(255,107,53,.35)}
+.stars{display:flex;gap:3px;margin-bottom:16px;color:var(--primary-2)}
+.testi p{font-size:.94rem;color:var(--muted);margin-bottom:24px;flex:1}
+.testi p strong{color:var(--text)}
+.testi-author{display:flex;align-items:center;gap:12px}
+.avatar{
+  width:44px;height:44px;border-radius:50%;display:grid;place-items:center;
+  font-weight:800;font-size:.9rem;color:#140A02;background:var(--grad);flex-shrink:0;
+}
+.testi-author h5{font-size:.9rem;font-weight:700}
+.testi-author span{font-size:.78rem;color:var(--muted)}
+
+/* ============ 11. FAQ ============ */
+.faq-list{max-width:820px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+.faq-item{border-radius:var(--radius-sm);background:var(--card);border:1px solid var(--border);overflow:hidden;transition:.25s}
+.faq-item.open{border-color:rgba(255,107,53,.4);background:rgba(255,107,53,.05)}
+.faq-q{
+  width:100%;padding:20px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;
+  background:none;border:none;cursor:pointer;text-align:left;font-weight:700;font-size:.95rem;
+}
+.faq-q .plus{
+  flex-shrink:0;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;
+  background:rgba(255,255,255,.06);transition:.3s;font-size:1.1rem;color:var(--primary);
+}
+.faq-item.open .plus{transform:rotate(45deg);background:var(--primary);color:#140A02}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.faq-a p{padding:0 24px 22px;color:var(--muted);font-size:.9rem}
+
+/* ============ 12. CONTACT ============ */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
+.contact-card{
+  padding:34px;border-radius:var(--radius);background:var(--card);border:1px solid var(--border);
+  backdrop-filter:blur(14px);
+}
+.contact-card h3{font-size:1.25rem;margin-bottom:10px}
+.contact-card > p{color:var(--muted);font-size:.92rem;margin-bottom:26px}
+.contact-row{display:flex;gap:14px;align-items:center;padding:14px 0;border-bottom:1px solid var(--border)}
+.contact-row:last-of-type{border-bottom:none}
+.contact-ic{
+  width:42px;height:42px;border-radius:12px;display:grid;place-items:center;flex-shrink:0;
+  background:rgba(255,107,53,.12);color:var(--primary);border:1px solid rgba(255,107,53,.22);
+}
+.contact-row h5{font-size:.82rem;color:var(--muted);font-weight:600;margin-bottom:2px}
+.contact-row p{font-size:.92rem;font-weight:700}
+
+/* Formulaires */
+.field{margin-bottom:16px}
+.field label{display:block;font-size:.8rem;font-weight:700;margin-bottom:7px;color:var(--muted)}
+.field input,.field select,.field textarea{
+  width:100%;padding:13px 16px;border-radius:var(--radius-sm);
+  background:rgba(255,255,255,.04);border:1px solid var(--border-strong);
+  font-size:.92rem;transition:.2s;outline:none;
+}
+.field input:focus,.field select:focus,.field textarea:focus{
+  border-color:var(--primary);background:rgba(255,107,53,.06);
+  box-shadow:0 0 0 3px rgba(255,107,53,.15);
+}
+.field textarea{resize:vertical;min-height:100px}
+.field select{cursor:pointer}
+.field select option{background:#151527;color:var(--text)}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+
+/* ============ 13. FOOTER ============ */
+footer{border-top:1px solid var(--border);padding:64px 0 32px;background:var(--bg-2)}
+.footer-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;margin-bottom:48px}
+.footer-brand p{color:var(--muted);font-size:.88rem;margin:16px 0 20px;max-width:280px}
+.socials{display:flex;gap:10px}
+.social{
+  width:38px;height:38px;border-radius:11px;display:grid;place-items:center;
+  background:rgba(255,255,255,.05);border:1px solid var(--border);color:var(--muted);transition:.25s;
+}
+.social:hover{background:var(--primary);color:#140A02;border-color:var(--primary);transform:translateY(-3px)}
+.footer-col h5{font-size:.78rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:18px}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:11px}
+.footer-col a{font-size:.88rem;color:var(--muted);transition:.2s}
+.footer-col a:hover{color:var(--primary)}
+.footer-bottom{
+  border-top:1px solid var(--border);padding-top:28px;
+  display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;
+  font-size:.82rem;color:var(--muted);
+}
+.footer-bottom .partner-tag{display:inline-flex;align-items:center;gap:8px}
+.footer-bottom .partner-tag .d{width:6px;height:6px;border-radius:50%;background:var(--primary)}
+
+/* ============ 14. WHATSAPP FLOTTANT ============ */
+.wa-float{
+  position:fixed;bottom:24px;right:24px;z-index:800;
+  width:60px;height:60px;border-radius:50%;background:var(--green);
+  display:grid;place-items:center;color:#fff;cursor:pointer;
+  box-shadow:0 12px 34px -8px rgba(37,211,102,.7);
+  transition:.3s;border:none;
+}
+.wa-float:hover{transform:scale(1.1) rotate(6deg)}
+.wa-float::before{
+  content:'';position:absolute;inset:0;border-radius:50%;background:var(--green);
+  animation:waPulse 2.4s infinite;z-index:-1;
+}
+@keyframes waPulse{0%{transform:scale(1);opacity:.6}100%{transform:scale(1.7);opacity:0}}
+.wa-tooltip{
+  position:absolute;right:74px;top:50%;transform:translateY(-50%);
+  background:var(--card-solid);border:1px solid var(--border-strong);
+  padding:8px 14px;border-radius:10px;font-size:.8rem;font-weight:700;white-space:nowrap;
+  opacity:0;pointer-events:none;transition:.3s;
+}
+.wa-float:hover .wa-tooltip{opacity:1}
+
+/* ============ 15. MODALES ============ */
+.modal{
+  position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;
+  padding:20px;opacity:0;pointer-events:none;transition:.3s;
+}
+.modal.open{opacity:1;pointer-events:auto}
+.modal-backdrop{position:absolute;inset:0;background:rgba(5,5,10,.8);backdrop-filter:blur(8px)}
+.modal-box{
+  position:relative;width:100%;max-width:560px;max-height:90vh;overflow-y:auto;
+  background:var(--card-solid);border:1px solid var(--border-strong);
+  border-radius:24px;padding:34px;
+  transform:translateY(24px) scale(.97);transition:.35s cubic-bezier(.34,1.4,.64,1);
+  box-shadow:0 40px 100px -20px rgba(0,0,0,.9);
+}
+.modal.open .modal-box{transform:translateY(0) scale(1)}
+.modal-box.wide{max-width:680px}
+.modal-close{
+  position:absolute;top:18px;right:18px;width:36px;height:36px;border-radius:50%;
+  background:rgba(255,255,255,.06);border:1px solid var(--border);cursor:pointer;
+  display:grid;place-items:center;color:var(--muted);transition:.2s;font-size:1.1rem;
+}
+.modal-close:hover{background:rgba(255,107,53,.15);color:var(--primary);transform:rotate(90deg)}
+.modal-box h3{font-size:1.4rem;margin-bottom:8px;padding-right:40px}
+.modal-box > p.sub{color:var(--muted);font-size:.9rem;margin-bottom:26px}
+.modal-box::-webkit-scrollbar{width:6px}
+.modal-box::-webkit-scrollbar-thumb{background:rgba(255,255,255,.15);border-radius:10px}
+
+/* État de confirmation */
+.confirm-state{text-align:center;padding:20px 0}
+.confirm-icon{
+  width:76px;height:76px;border-radius:50%;margin:0 auto 24px;
+  background:rgba(37,211,102,.14);border:1px solid rgba(37,211,102,.35);
+  display:grid;place-items:center;color:var(--green);animation:popIn .5s cubic-bezier(.34,1.6,.64,1);
+}
+@keyframes popIn{from{transform:scale(.5);opacity:0}to{transform:scale(1);opacity:1}}
+.confirm-state h3{margin-bottom:10px}
+.confirm-state p{color:var(--muted);font-size:.92rem;margin-bottom:26px}
+
+/* Dashboard aperçu */
+.dash-tabs{display:flex;gap:6px;overflow-x:auto;padding-bottom:12px;margin-bottom:20px;border-bottom:1px solid var(--border)}
+.dash-tabs button{
+  padding:9px 16px;border-radius:100px;border:none;background:transparent;
+  color:var(--muted);font-weight:700;font-size:.82rem;cursor:pointer;white-space:nowrap;transition:.2s;
+}
+.dash-tabs button.active{background:rgba(255,107,53,.15);color:var(--primary)}
+.dash-panel{display:none}
+.dash-panel.active{display:block;animation:fadeUp .35s ease}
+.dash-card{
+  padding:18px;border-radius:14px;background:rgba(255,255,255,.04);
+  border:1px solid var(--border);margin-bottom:12px;
+}
+.dash-card h5{font-size:.88rem;margin-bottom:4px}
+.dash-card p{font-size:.8rem;color:var(--muted)}
+.pill{
+  display:inline-block;font-size:.7rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;
+  padding:4px 10px;border-radius:100px;background:rgba(37,211,102,.14);color:var(--green);
+  border:1px solid rgba(37,211,102,.3);margin-bottom:8px;
+}
+
+/* Toast */
+.toast{
+  position:fixed;bottom:100px;left:50%;transform:translate(-50%,20px);
+  background:var(--card-solid);border:1px solid var(--border-strong);
+  padding:14px 24px;border-radius:100px;font-size:.88rem;font-weight:700;
+  box-shadow:var(--shadow);z-index:1100;opacity:0;pointer-events:none;transition:.35s;
+}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+/* ============ 16. REVEAL ============ */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s cubic-bezier(.4,0,.2,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}
+.reveal.d3{transition-delay:.24s}.reveal.d4{transition-delay:.32s}
+
+/* ============ 17. RESPONSIVE ============ */
+@media(max-width:1024px){
+  .pricing-grid{grid-template-columns:repeat(2,1fr)}
+  .lives-grid{grid-template-columns:1fr}
+  .about-grid{grid-template-columns:1fr;gap:36px}
+  .testi-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:32px}
+}
+@media(max-width:860px){
+  .nav-links,.nav-actions .btn-ghost{display:none}
+  .burger{display:grid}
+  .steps{grid-template-columns:1fr}
+  .contact-grid{grid-template-columns:1fr}
+  .hero-stats{grid-template-columns:1fr 1fr}
+  .hero-stats .stat:last-child{grid-column:span 2}
+}
+@media(max-width:600px){
+  .pricing-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+  .field-row{grid-template-columns:1fr}
+  .hero{padding-top:120px}
+  .hero-cta{flex-direction:column;align-items:stretch}
+  .hero-cta .btn{width:100%}
+  .modal-box{padding:26px 22px;border-radius:20px}
+  .live-item{flex-wrap:wrap}
+  .live-badge{margin-left:0}
+  .tabs{width:100%}
+  .tab{flex:1;padding:12px 14px;font-size:.85rem}
+  .footer-bottom{flex-direction:column;text-align:center}
+  .wa-float{width:54px;height:54px;bottom:18px;right:18px}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header id="header">
+  <div class="container nav">
+    <a href="#accueil" class="logo">
+      <span class="logo-mark">O</span> OCD
+    </a>
+    <ul class="nav-links">
+      <li><a href="#accueil">Accueil</a></li>
+      <li><a href="#comment">Comment ça marche</a></li>
+      <li><a href="#abonnements">Abonnements</a></li>
+      <li><a href="#lives">Lives</a></li>
+      <li><a href="#apropos">À propos</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="btn btn-ghost btn-sm" onclick="openModal('modal-login')">Espace Membres</button>
+      <button class="btn btn-primary btn-sm" onclick="scrollToId('abonnements')">Rejoindre</button>
+      <button class="burger" id="burger" aria-label="Menu"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<!-- ============ MENU MOBILE ============ -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#accueil">Accueil</a>
+  <a href="#comment">Comment ça marche</a>
+  <a href="#abonnements">Abonnements</a>
+  <a href="#lives">Lives</a>
+  <a href="#apropos">À propos</a>
+  <a href="#contact">Contact</a>
+  <button class="btn btn-ghost" onclick="openModal('modal-login');closeMobile()">Espace Membres</button>
+  <button class="btn btn-primary" onclick="scrollToId('abonnements');closeMobile()">Rejoindre OCD</button>
+</div>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="accueil">
+  <div class="hero-bg">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+  <div class="hero-grid"></div>
+  <div class="container hero-inner">
+    <div class="eyebrow reveal"><span class="dot"></span> En partenariat avec House of Challenge</div>
+    <h1 class="reveal d1">Transforme tes lives<br>en <span class="gradient-text">clients réels.</span></h1>
+    <p class="lead reveal d2">OCD est la communauté qui connecte les prestataires de services aux clients, grâce à des lives exclusifs diffusés avec House of Challenge. Abonne-toi, présente ton offre, reçois tes premières commandes directement sur WhatsApp.</p>
+    <div class="hero-cta reveal d3">
+      <button class="btn btn-primary" onclick="scrollToId('abonnements')">
+        Rejoindre OCD
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+      <button class="btn btn-ghost" onclick="openModal('modal-booking')">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Réserver un live
+      </button>
+    </div>
+    <div class="hero-stats reveal d4">
+      <div class="stat"><b>1 200+</b><span>Membres actifs</span></div>
+      <div class="stat"><b>40+</b><span>Lives diffusés</span></div>
+      <div class="stat"><b>98 %</b><span>Satisfaction</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MARQUEE ============ -->
+<div class="marquee">
+  <div class="marquee-track">
+    <div class="marquee-item"><span class="ic">◆</span> House of Challenge</div>
+    <div class="marquee-item"><span class="ic">◆</span> Bovam</div>
+    <div class="marquee-item"><span class="ic">◆</span> Jojo</div>
+    <div class="marquee-item"><span class="ic">◆</span> Lives Hebdomadaires</div>
+    <div class="marquee-item"><span class="ic">◆</span> Communauté Privée</div>
+    <div class="marquee-item"><span class="ic">◆</span> Opportunités Réelles</div>
+    <div class="marquee-item"><span class="ic">◆</span> House of Challenge</div>
+    <div class="marquee-item"><span class="ic">◆</span> Bovam</div>
+    <div class="marquee-item"><span class="ic">◆</span> Jojo</div>
+    <div class="marquee-item"><span class="ic">◆</span> Lives Hebdomadaires</div>
+    <div class="marquee-item"><span class="ic">◆</span> Communauté Privée</div>
+    <div class="marquee-item"><span class="ic">◆</span> Opportunités Réelles</div>
+  </div>
+</div>
+
+<!-- ============ COMMENT ÇA MARCHE ============ -->
+<section class="section" id="comment">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow"><span class="dot"></span> Le fonctionnement</div>
+      <h2>Simple. Rapide. <span class="gradient-text">Concret.</span></h2>
+      <p class="lead">Que tu sois prestataire ou client, tout se passe en 3 étapes. Pas de blabla, que du résultat.</p>
+    </div>
+
+    <div class="tabs reveal d1">
+      <button class="tab active" data-tab="prestataire">Je suis prestataire</button>
+      <button class="tab" data-tab="client">Je suis client</button>
+    </div>
+
+    <div class="tab-panel active" id="panel-prestataire">
+      <div class="steps">
+        <div class="step reveal">
+          <div class="step-num">1</div>
+          <h3>Choisis ta formule</h3>
+          <p>Semaine, week-end, mensuel ou annuel. Paie par Mobile Money, Wave, Orange Money ou carte bancaire en quelques secondes.</p>
+        </div>
+        <div class="step reveal d1">
+          <div class="step-num">2</div>
+          <h3>Réserve ton live</h3>
+          <p>Sélectionne un créneau disponible, décris ton service en deux lignes. Ta demande part directement sur notre WhatsApp.</p>
+        </div>
+        <div class="step reveal d2">
+          <div class="step-num">3</div>
+          <h3>Passe à l'antenne</h3>
+          <p>Présente ton offre en direct avec House of Challenge. Les clients intéressés te contactent directement sur WhatsApp.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="panel-client">
+      <div class="steps">
+        <div class="step reveal">
+          <div class="step-num">1</div>
+          <h3>Découvre les lives</h3>
+          <p>Regarde les sessions diffusées chaque semaine avec House of Challenge. Des prestataires vérifiés, des services concrets.</p>
+        </div>
+        <div class="step reveal d1">
+          <div class="step-num">2</div>
+          <h3>Repère ton prestataire</h3>
+          <p>Un service te plaît ? Son profil, sa description et ses contacts sont affichés clairement pendant le live.</p>
+        </div>
+        <div class="step reveal d2">
+          <div class="step-num">3</div>
+          <h3>Contacte sur WhatsApp</h3>
+          <p>Un clic, et tu discutes directement avec lui. Zéro intermédiaire, zéro commission cachée.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABONNEMENTS ============ -->
+<section class="section" id="abonnements" style="background:linear-gradient(180deg,transparent,rgba(255,107,53,.03),transparent)">
+  <div class="container">
+    <div class="section-head center reveal">
+      <div class="eyebrow"><span class="dot"></span> Les abonnements</div>
+      <h2>Choisis ton <span class="gradient-text">rythme.</span></h2>
+      <p class="lead">Quatre formules, un seul objectif : te donner de la visibilité et des clients. Sans engagement caché.</p>
+    </div>
+
+    <div class="pricing-grid">
+      <!-- Semaine -->
+      <div class="plan reveal">
+        <div class="plan-name">Semaine</div>
+        <div class="plan-price"><b>5 000</b><span>FCFA / sem.</span></div>
+        <div class="plan-sub">Pour tester le concept</div>
+        <ul>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Accès à la communauté</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> 1 live par semaine</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Replays disponibles</li>
+        </ul>
+        <button class="btn btn-ghost btn-block" onclick="choosePlan('Semaine','5 000 FCFA')">Choisir cette formule</button>
+      </div>
+
+      <!-- Week-end -->
+      <div class="plan reveal d1">
+        <div class="plan-name">Week-end</div>
+        <div class="plan-price"><b>3 000</b><span>FCFA / week-end</span></div>
+        <div class="plan-sub">Pour les actifs la semaine</div>
+        <ul>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Accès week-end uniquement</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> 1 live samedi ou dimanche</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Replays disponibles</li>
+        </ul>
+        <button class="btn btn-ghost btn-block" onclick="choosePlan('Week-end','3 000 FCFA')">Choisir cette formule</button>
+      </div>
+
+      <!-- Mensuel -->
+      <div class="plan featured reveal d2">
+        <div class="plan-tag">Le plus choisi</div>
+        <div class="plan-name">Mensuel</div>
+        <div class="plan-price"><b>15 000</b><span>FCFA / mois</span></div>
+        <div class="plan-sub">Le meilleur rapport qualité/prix</div>
+        <ul>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Accès complet à la communauté</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> 4 lives par mois</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Ressources exclusives</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Support WhatsApp prioritaire</li>
+        </ul>
+        <button class="btn btn-primary btn-block" onclick="choosePlan('Mensuel','15 000 FCFA')">Choisir cette formule</button>
+      </div>
+
+      <!-- Annuel -->
+      <div class="plan reveal d3">
+        <div class="plan-name">Annuel</div>
+        <div class="plan-price"><b>120 000</b><span>FCFA / an</span></div>
+        <div class="plan-sub">Économise 60 000 FCFA</div>
+        <ul>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Tout le plan Mensuel</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Lives illimités</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Mise en avant prioritaire</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Coaching individuel</li>
+        </ul>
+        <button class="btn btn-ghost btn-block" onclick="choosePlan('Annuel','120 000 FCFA')">Choisir cette formule</button>
+      </div>
+    </div>
+
+    <p class="note reveal">Paiement sécurisé par <strong>Mobile Money</strong>, <strong>Wave</strong>, <strong>Orange Money</strong>, <strong>MTN MoMo</strong> ou carte bancaire. Annulation possible à tout moment.</p>
+  </div>
+</section>
+
+<!-- ============ LIVES ============ -->
+<section class="section" id="lives">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow"><span class="dot"></span> Lives & Sessions</div>
+      <h2>Les prochains <span class="gradient-text">rendez-vous.</span></h2>
+      <p class="lead">Chaque semaine, des sessions en direct avec House of Challenge pour présenter ton service et rencontrer tes futurs clients.</p>
+    </div>
+
+    <div class="lives-grid">
+      <div class="reveal">
+        <div class="live-list">
+          <div class="live-item">
+            <div class="live-date"><b>12</b><span>Déc</span></div>
+            <div class="live-info">
+              <h4>Soirée Pitch : Présente ton service en 3 minutes</h4>
+              <p><span>🕗 20h00</span><span>📍 House of Challenge</span></p>
+            </div>
+            <div class="live-badge"><span class="badge-live">Live</span></div>
+          </div>
+          <div class="live-item">
+            <div class="live-date"><b>13</b><span>Déc</span></div>
+            <div class="live-info">
+              <h4>Atelier : Vendre sur WhatsApp comme un pro</h4>
+              <p><span>🕕 18h00</span><span>📍 En ligne</span></p>
+            </div>
+            <div class="live-badge"><span class="badge-live">Live</span></div>
+          </div>
+          <div class="live-item">
+            <div class="live-date"><b>14</b><span>Déc</span></div>
+            <div class="live-info">
+              <h4>Live Coaching : Les coulisses de ton business</h4>
+              <p><span>🕖 19h30</span><span>📍 En ligne</span></p>
+            </div>
+            <div class="live-badge"><span class="badge-live">Live</span></div>
+          </div>
+          <div class="live-item">
+            <div class="live-date"><b>19</b><span>Déc</span></div>
+            <div class="live-info">
+              <h4>Spécial Prestataires : Rencontre tes clients</h4>
+              <p><span>🕗 20h00</span><span>📍 House of Challenge</span></p>
+            </div>
+            <div class="live-badge"><span class="badge-live">Live</span></div>
+          </div>
+        </div>
+        <button class="btn btn-primary" style="margin-top:26px" onclick="openModal('modal-booking')">
+          Réserver mon créneau
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+
+      <div class="reveal d1">
+        <h3 style="font-size:1.1rem;margin-bottom:20px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.1em;font-size:.78rem">Replays récents</h3>
+        <div class="replays">
+          <div class="replay" onclick="toast('Les replays sont réservés aux abonnés 🔒')">
+            <div class="play-btn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 3 20 12 6 21"/></svg>
+            </div>
+            <div>
+              <h4>Comment j'ai signé 12 clients avec un seul live</h4>
+              <p>42 min · 3 200 vues</p>
+            </div>
+          </div>
+          <div class="replay" onclick="toast('Les replays sont réservés aux abonnés 🔒')">
+            <div class="play-btn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 3 20 12 6 21"/></svg>
+            </div>
+            <div>
+              <h4>Les 5 erreurs qui tuent ta présentation</h4>
+              <p>28 min · 1 800 vues</p>
+            </div>
+          </div>
+          <div class="replay" onclick="toast('Les replays sont réservés aux abonnés 🔒')">
+            <div class="play-btn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 3 20 12 6 21"/></svg>
+            </div>
+            <div>
+              <h4>De 0 à 500 abonnés en 30 jours</h4>
+              <p>35 min · 2 400 vues</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ À PROPOS ============ -->
+<section class="section" id="apropos" style="background:linear-gradient(180deg,transparent,rgba(124,92,255,.04),transparent)">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <div class="eyebrow"><span class="dot"></span> À propos d'OCD</div>
+        <h2>Une communauté née d'une <span class="gradient-text">vraie vision.</span></h2>
+        <p><strong>OCD</strong> est née d'un constat simple : beaucoup de talents n'ont pas accès à la bonne audience. Et beaucoup de clients ne savent pas où trouver les bons prestataires.</p>
+        <p>Notre mission : créer le pont manquant entre les deux. Grâce à des lives diffusés avec <strong>House of Challenge</strong>, chaque prestataire peut présenter son service à une communauté engagée, et chaque client peut trouver la bonne personne en un clic.</p>
+        <p>Porté par <strong>Bovam</strong> et <strong>Jojo</strong>, OCD grandit chaque semaine avec un seul objectif : <strong>créer de vraies opportunités</strong>, pas juste du contenu.</p>
+        <button class="btn btn-ghost" style="margin-top:10px" onclick="openModal('modal-booking')">Rejoindre l'aventure</button>
+      </div>
+
+      <div class="about-visual reveal d2">
+        <div class="about-card">
+          <h4 style="margin-bottom:22px">Nos partenaires & fondateurs</h4>
+          <div class="partner">
+            <div class="partner-ic">H</div>
+            <div>
+              <h4>House of Challenge</h4>
+              <p>Partenaire de diffusion des lives</p>
+            </div>
+          </div>
+          <div class="partner">
+            <div class="partner-ic">B</div>
+            <div>
+              <h4>Bovam</h4>
+              <p>Cofondateur d'OCD</p>
+            </div>
+          </div>
+          <div class="partner">
+            <div class="partner-ic">J</div>
+            <div>
+              <h4>Jojo</h4>
+              <p>Cofondateur d'OCD</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TÉMOIGNAGES ============ -->
+<section class="section" id="temoignages">
+  <div class="container">
+    <div class="section-head center reveal">
+      <div class="eyebrow"><span class="dot"></span> Témoignages</div>
+      <h2>Ils ont <span class="gradient-text">testé.</span> Ils racontent.</h2>
+      <p class="lead">Des prestataires et des clients qui ont trouvé leur match grâce à OCD.</p>
+    </div>
+
+    <div class="testi-grid">
+      <div class="testi reveal">
+        <div class="stars">★★★★★</div>
+        <p>« J'ai présenté mon service de <strong>design graphique</strong> lors d'un live. Le lendemain, j'avais 4 clients dans ma boîte WhatsApp. Franchement, je ne m'attendais pas à ça. »</p>
+        <div class="testi-author">
+          <div class="avatar">AK</div>
+          <div><h5>Aminata K.</h5><span>Designer graphique</span></div>
+        </div>
+      </div>
+      <div class="testi reveal d1">
+        <div class="stars">★★★★★</div>
+        <p>« En tant que cliente, c'est simple : je regarde le live, je vois un prestataire qui me plaît, je clique, et j'ai son WhatsApp direct. <strong>Zéro perte de temps.</strong> »</p>
+        <div class="testi-author">
+          <div class="avatar">MD</div>
+          <div><h5>Moussa D.</h5><span>Client final</span></div>
+        </div>
+      </div>
+      <div class="testi reveal d2">
+        <div class="stars">★★★★★</div>
+        <p>« L'abonnement mensuel a été le meilleur investissement de l'année. <strong>4 lives, 11 clients</strong>, et une communauté qui me fait confiance. Merci OCD. »</p>
+        <div class="testi-author">
+          <div class="avatar">FS</div>
+          <div><h5>Fatou S.</h5><span>Coach en nutrition</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="section" id="faq">
+  <div class="container">
+    <div class="section-head center reveal">
+      <div class="eyebrow"><span class="dot"></span> FAQ</div>
+      <h2>Les questions <span class="gradient-text">fréquentes.</span></h2>
+    </div>
+
+    <div class="faq-list">
+      <div class="faq-item reveal">
+        <button class="faq-q">Comment fonctionne OCD concrètement ? <span class="plus">+</span></button>
+        <div class="faq-a"><p>Tu t'abonnes à une formule, tu accèdes à l'espace membres, tu réserves un créneau de live, tu présentes ton service en direct avec House of Challenge, et les clients intéressés te contactent directement sur WhatsApp.</p></div>
+      </div>
+      <div class="faq-item reveal d1">
+        <button class="faq-q">Puis-je annuler mon abonnement ? <span class="plus">+</span></button>
+        <div class="faq-a"><p>Oui, à tout moment. L'abonnement ne se renouvelle pas automatiquement sans ton accord. Tu peux arrêter après la période en cours, sans frais supplémentaires.</p></div>
+      </div>
+      <div class="faq-item reveal d1">
+        <button class="faq-q">Comment réserver un live ? <span class="plus">+</span></button>
+        <div class="faq-a"><p>Depuis la page Lives, clique sur « Réserver mon créneau ». Remplis le court formulaire, et ta demande part directement sur notre WhatsApp. Tu reçois une confirmation sous 24h.</p></div>
+      </div>
+      <div class="faq-item reveal d2">
+        <button class="faq-q">Quels sont les moyens de paiement ? <span class="plus">+</span></button>
+        <div class="faq-a"><p>Mobile Money (Orange Money, MTN MoMo), Wave, et carte bancaire. Le paiement se confirme par WhatsApp pour un maximum de sécurité.</p></div>
+      </div>
+      <div class="faq-item reveal d2">
+        <button class="faq-q">Le live est-il obligatoire pour être membre ? <span class="plus">+</span></button>
+        <div class="faq-a"><p>Non. L'accès à la communauté, aux ressources exclusives et aux replays est inclus. Le live est un levier en plus pour gagner en visibilité — tu choisis quand tu es prêt.</p></div>
+      </div>
+      <div class="faq-item reveal d3">
+        <button class="faq-q">Comment contacter un prestataire vu en live ? <span class="plus">+</span></button>
+        <div class="faq-a"><p>Chaque prestataire affiche son lien WhatsApp pendant et après le live. Un clic et la discussion démarre directement. Aucun intermédiaire, aucune commission.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="section" id="contact" style="background:linear-gradient(180deg,transparent,rgba(255,107,53,.04),transparent)">
+  <div class="container">
+    <div class="section-head center reveal">
+      <div class="eyebrow"><span class="dot"></span> Contact & Support</div>
+      <h2>Une question ? <span class="gradient-text">On te répond.</span></h2>
+      <p class="lead">Écris-nous via le formulaire ou directement sur WhatsApp. Réponse en moins de 2h en journée.</p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-card reveal">
+        <h3>Parlons de ton projet</h3>
+        <p>Remplis ce formulaire, on te recontacte rapidement.</p>
+        <form id="contactForm">
+          <div class="field">
+            <label for="c-name">Ton nom</label>
+            <input type="text" id="c-name" placeholder="Ex : Aminata K." required />
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="c-phone">WhatsApp / Téléphone</label>
+              <input type="tel" id="c-phone" placeholder="Ex : +225 07 00 00 00 00" required />
+            </div>
+            <div class="field">
+              <label for="c-subject">Sujet</label>
+              <select id="c-subject">
+                <option>Je veux rejoindre OCD</option>
+                <option>Réserver un live</option>
+                <option>Question sur un abonnement</option>
+                <option>Partenariat</option>
+                <option>Autre</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label for="c-msg">Ton message</label>
+            <textarea id="c-msg" placeholder="Explique-nous ce dont tu as besoin..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-wa btn-block">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 6.3A8 8 0 0 0 4.2 16.6L3 21l4.5-1.2a8 8 0 0 0 10.1-13.5zM12 19.4a6.4 6.4 0 0 1-3.3-.9l-.2-.1-2.5.7.7-2.4-.2-.3a6.4 6.4 0 1 1 5.5 3zM16.6 14c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1-.6.8-.8 1-.3.1-.6 0a5.3 5.3 0 0 1-1.5-1 6 6 0 0 1-1.1-1.3c-.1-.2 0-.3.1-.4l.4-.4c.1-.2.2-.3.2-.4s0-.3 0-.4-.6-1.3-.8-1.8-.4-.4-.5-.4h-.4a.9.9 0 0 0-.6.3 2.5 2.5 0 0 0-.8 1.8 4.3 4.3 0 0 0 .9 2.3 9.8 9.8 0 0 0 3.8 3.3c.5.2.9.4 1.3.5a3 3 0 0 0 1.4.1 2.3 2.3 0 0 0 1.5-1.1 1.9 1.9 0 0 0 .1-1.1z"/></svg>
+            Envoyer sur WhatsApp
+          </button>
+        </form>
+      </div>
+
+      <div class="reveal d1">
+        <div class="contact-card" style="margin-bottom:20px">
+          <h3>Contact direct</h3>
+          <p>Le plus rapide : WhatsApp.</p>
+          <div class="contact-row">
+            <div class="contact-ic">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 6.3A8 8 0 0 0 4.2 16.6L3 21l4.5-1.2a8 8 0 0 0 10.1-13.5zM12 19.4a6.4 6.4 0 0 1-3.3-.9l-.2-.1-2.5.7.7-2.4-.2-.3a6.4 6.4 0 1 1 5.5 3z"/></svg>
+            </div>
+            <div><h5>WhatsApp</h5><p>+225 07 00 00 00 00</p></div>
+          </div>
+          <div class="contact-row">
+            <div class="contact-ic">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            </div>
+            <div><h5>Email</h5><p>contact@ocd-community.com</p></div>
+          </div>
+          <div class="contact-row">
+            <div class="contact-ic">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div><h5>Horaires</h5><p>Lun — Sam · 9h à 21h</p></div>
+          </div>
+          <button class="btn btn-wa btn-block" style="margin-top:20px" onclick="openWhatsApp('Bonjour OCD 👋 Je viens du site et j\\'ai une question.')">
+            Ouvrir WhatsApp
+          </button>
+        </div>
+
+        <div class="contact-card">
+          <h3 style="font-size:1rem">Support prioritaire</h3>
+          <p style="margin-bottom:0">Les abonnés Mensuel et Annuel bénéficient d'un accès WhatsApp prioritaire avec réponse en moins de 30 minutes.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#accueil" class="logo"><span class="logo-mark">O</span> OCD</a>
+        <p>La communauté qui transforme les lives en opportunités réelles. En partenariat avec House of Challenge.</p>
+        <div class="socials">
+          <a href="#" class="social" aria-label="Instagram"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+          <a href="#" class="social" aria-label="TikTok"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M19.6 6.3a5.6 5.6 0 0 1-3.4-1.1v8.9a5.5 5.5 0 1 1-4.7-5.4v2.8a2.7 2.7 0 1 0 2 2.6V2h2.7a5.6 5.6 0 0 0 3.4 4.3z"/></svg></a>
+          <a href="#" class="social" aria-label="YouTube"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.5-.5-5.2a2.8 2.8 0 0 0-2-2C18.8 4.3 12 4.3 12 4.3s-6.8 0-8.5.5a2.8 2.8 0 0 0-2 2C1 8.5 1 12 1 12s0 3.5.5 5.2a2.8 2.8 0 0 0 2 2c1.7.5 8.5.5 8.5.5s6.8 0 8.5-.5a2.8 2.8 0 0 0 2-2C23 15.5 23 12 23 12zM9.8 15.5v-7l6 3.5z"/></svg></a>
+          <a href="#" class="social" aria-label="WhatsApp"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 6.3A8 8 0 0 0 4.2 16.6L3 21l4.5-1.2a8 8 0 0 0 10.1-13.5zM12 19.4a6.4 6.4 0 0 1-3.3-.9l-.2-.1-2.5.7.7-2.4-.2-.3a6.4 6.4 0 1 1 5.5 3z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Navigation</h5>
+        <ul>
+          <li><a href="#accueil">Accueil</a></li>
+          <li><a href="#comment">Comment ça marche</a></li>
+          <li><a href="#abonnements">Abonnements</a></li>
+          <li><a href="#lives">Lives</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Communauté</h5>
+        <ul>
+          <li><a href="#apropos">À propos</a></li>
+          <li><a href="#temoignages">Témoignages</a></li>
+          <li><a href="#" onclick="openModal('modal-login');return false;">Espace Membres</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Légal</h5>
+        <ul>
+          <li><a href="#">Conditions générales</a></li>
+          <li><a href="#">Politique de confidentialité</a></li>
+          <li><a href="#">Mentions légales</a></li>
+          <li><a href="#contact">Support</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> OCD — Tous droits réservés.</span>
+      <span class="partner-tag"><span class="d"></span> En partenariat avec House of Challenge</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ WHATSAPP FLOTTANT ============ -->
+<button class="wa-float" onclick="openWhatsApp('Bonjour OCD 👋 Je viens du site et j\\'aimerais en savoir plus.')" aria-label="WhatsApp">
+  <span class="wa-tooltip">Discutons sur WhatsApp</span>
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 6.3A8 8 0 0 0 4.2 16.6L3 21l4.5-1.2a8 8 0 0 0 10.1-13.5zM12 19.4a6.4 6.4 0 0 1-3.3-.9l-.2-.1-2.5.7.7-2.4-.2-.3a6.4 6.4 0 1 1 5.5 3zM16.6 14c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1-.6.8-.8 1-.3.1-.6 0a5.3 5.3 0 0 1-1.5-1 6 6 0 0 1-1.1-1.3c-.1-.2 0-.3.1-.4l.4-.4c.1-.2.2-.3.2-.4s0-.3 0-.4-.6-1.3-.8-1.8-.4-.4-.5-.4h-.4a.9.9 0 0 0-.6.3 2.5 2.5 0 0 0-.8 1.8 4.3 4.3 0 0 0 .9 2.3 9.8 9.8 0 0 0 3.8 3.3c.5.2.9.4 1.3.5a3 3 0 0 0 1.4.1 2.3 2.3 0 0 0 1.5-1.1 1.9 1.9 0 0 0 .1-1.1z"/></svg>
+</button>
+
+<!-- ============ MODALE : RÉSERVATION LIVE ============ -->
+<div class="modal" id="modal-booking">
+  <div class="modal-backdrop" onclick="closeModal('modal-booking')"></div>
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-booking')">✕</button>
+    <div id="bookingFormWrap">
+      <h3>Réserver un live</h3>
+      <p class="sub">Remplis ce formulaire — ta demande part directement sur notre WhatsApp.</p>
+      <form id="bookingForm">
+        <div class="field">
+          <label for="b-name">Nom complet *</label>
+          <input type="text" id="b-name" placeholder="Ex : Aminata Koné" required />
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="b-type">Type de session *</label>
+            <select id="b-type" required>
+              <option>Présentation de service</option>
+              <option>Coaching</option>
+              <option>Démonstration produit</option>
+              <option>Interview / Témoignage</option>
+              <option>Autre</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="b-service">Service proposé *</label>
+            <input type="text" id="b-service" placeholder="Ex : Design graphique" required />
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="b-date">Date souhaitée *</label>
+            <input type="date" id="b-date" required />
+          </div>
+          <div class="field">
+            <label for="b-time">Heure *</label>
+            <input type="time" id="b-time" required />
+          </div>
+        </div>
+        <div class="field">
+          <label for="b-desc">Description courte *</label>
+          <textarea id="b-desc" placeholder="Décris ton service en 2-3 lignes..." required></textarea>
+        </div>
+        <div class="field">
+          <label for="b-link">Lien réseaux sociaux (optionnel)</label>
+          <input type="url" id="b-link" placeholder="https://instagram.com/..." />
+        </div>
+        <button type="submit" class="btn btn-wa btn-block">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 6.3A8 8 0 0 0 4.2 16.6L3 21l4.5-1.2a8 8 0 0 0 10.1-13.5zM12 19.4a6.4 6.4 0 0 1-3.3-.9l-.2-.1-2.5.7.7-2.4-.2-.3a6.4 6.4 0 1 1 5.5 3z"/></svg>
+          Envoyer ma demande sur WhatsApp
+        </button>
+      </form>
+    </div>
+    <div id="bookingConfirm" class="confirm-state" style="display:none">
+      <div class="confirm-icon">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <h3>Demande envoyée !</h3>
+      <p>Ta demande a bien été transmise sur WhatsApp.<br>Nous te confirmons ton créneau sous 24h.</p>
+      <button class="btn btn-primary" onclick="closeModal('modal-booking')">Parfait, merci</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ MODALE : PAIEMENT ============ -->
+<div class="modal" id="modal-payment">
+  <div class="modal-backdrop" onclick="closeModal('modal-payment')"></div>
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-payment')">✕</button>
+    <div id="paymentFormWrap">
+      <h3>Souscrire à la formule</h3>
+      <p class="sub" id="paymentSub">Formule sélectionnée</p>
+      <form id="paymentForm">
+        <div class="field">
+          <label for="p-name">Nom complet *</label>
+          <input type="text" id="p-name" placeholder="Ex : Aminata Koné" required />
+        </div>
+        <div class="field">
+          <label for="p-phone">Numéro WhatsApp *</label>
+          <input type="tel" id="p-phone" placeholder="Ex : +225 07 00 00 00 00" required />
+        </div>
+        <div class="field">
+          <label for="p-method">Moyen de paiement *</label>
+          <select id="p-method" required>
+            <option>Orange Money</option>
+            <option>MTN MoMo</option>
+            <option>Wave</option>
+            <option>Moov Money</option>
+            <option>Carte bancaire</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">
+          Confirmer sur WhatsApp
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </form>
+      <p style="font-size:.78rem;color:var(--muted);text-align:center;margin-top:16px">Paiement sécurisé · Aucun débit automatique</p>
+    </div>
+    <div id="paymentConfirm" class="confirm-state" style="display:none">
+      <div class="confirm-icon">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <h3>Presque terminé !</h3>
+      <p>Ta demande d'abonnement a été envoyée sur WhatsApp.<br>Nous te transmettons les instructions de paiement dans les plus brefs délais.</p>
+      <button class="btn btn-primary" onclick="closeModal('modal-payment')">Compris</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ MODALE : CONNEXION / ESPACE MEMBRES ============ -->
+<div class="modal" id="modal-login">
+  <div class="modal-backdrop" onclick="closeModal('modal-login')"></div>
+  <div class="modal-box wide">
+    <button class="modal-close" onclick="closeModal('modal-login')">✕</button>
+
+    <div id="loginWrap">
+      <h3>Espace Membres</h3>
+      <p class="sub">Connecte-toi pour accéder à la communauté, tes lives et tes ressources.</p>
+      <form id="loginForm">
+        <div class="field">
+          <label for="l-email">Email</label>
+          <input type="email" id="l-email" placeholder="ton@email.com" required />
+        </div>
+        <div class="field">
+          <label for="l-pass">Mot de passe</label>
+          <input type="password" id="l-pass" placeholder="••••••••" required />
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Se connecter</button>
+      </form>
+      <p style="text-align:center;font-size:.83rem;color:var(--muted);margin-top:18px">
+        Pas encore abonné ? <a href="#abonnements" style="color:var(--primary);font-weight:700" onclick="closeModal('modal-login')">Choisir une formule</a>
+      </p>
+    </div>
+
+    <div id="dashboardWrap" style="display:none">
+      <div class="pill">Aperçu de l'espace membres</div>
+      <h3 style="margin-bottom:20px">Bonjour Aminata 👋</h3>
+      <div class="dash-tabs">
+        <button class="active" data-dash="dash-home">Tableau de bord</button>
+        <button data-dash="dash-lives">Mes Lives</button>
+        <button data-dash="dash-community">Communauté</button>
+        <button data-dash="dash-resources">Ressources</button>
+        <button data-dash="dash-profile">Mon Profil</button>
+      </div>
+
+      <div class="dash-panel active" id="dash-home">
+        <div class="dash-card">
+          <span class="pill">Abonnement actif</span>
+          <h5>Formule Mensuel — 15 000 FCFA</h5>
+          <p>Prochain renouvellement : 12 janvier 2026</p>
+        </div>
+        <div class="dash-card">
+          <h5>Prochain live</h5>
+          <p>Soirée Pitch — Vendredi 12 décembre à 20h00</p>
+        </div>
+        <div class="dash-card">
+          <h5>Messages non lus</h5>
+          <p>3 nouveaux messages dans la communauté</p>
+        </div>
+      </div>
+
+      <div class="dash-panel" id="dash-lives">
+        <div class="dash-card"><h5>Vendredi 12 déc. — 20h00</h5><p>Soirée Pitch · Confirmé ✅</p></div>
+        <div class="dash-card"><h5>Vendredi 19 déc. — 20h00</h5><p>Spécial Prestataires · En attente ⏳</p></div>
+        <button class="btn btn-primary btn-block" style="margin-top:12px" onclick="closeModal('modal-login');openModal('modal-booking')">Demander un nouveau créneau</button>
+      </div>
+
+      <div class="dash-panel" id="dash-community">
+        <div class="dash-card"><h5>💬 Présentation</h5><p>Présente-toi à la communauté en 3 lignes.</p></div>
+        <div class="dash-card"><h5>💡 Conseils</h5><p>Partage tes astuces pour réussir un live.</p></div>
+        <div class="dash-card"><h5>🤝 Opportunités</h5><p>Publie tes offres et besoins.</p></div>
+      </div>
+
+      <div class="dash-panel" id="dash-resources">
+        <div class="dash-card"><h5>📘 Guide : Réussir son premier live</h5><p>PDF · 12 pages</p></div>
+        <div class="dash-card"><h5>🎬 Replay : Vendre sur WhatsApp</h5><p>Vidéo · 28 min</p></div>
+        <div class="dash-card"><h5>📋 Template : Script de pitch</h5><p>Modèle modifiable</p></div>
+      </div>
+
+      <div class="dash-panel" id="dash-profile">
+        <div class="dash-card"><h5>Aminata Koné</h5><p>aminata@email.com · +225 07 00 00 00 00</p></div>
+        <div class="dash-card"><h5>Formule Mensuel</h5><p>Active jusqu'au 12 janvier 2026</p></div>
+      </div>
+
+      <button class="btn btn-ghost btn-block" style="margin-top:16px" onclick="logoutPreview()">Se déconnecter</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ TOAST ============ -->
+<div class="toast" id="toast"></div>
+
+<script>
+/* =========================================================
+   CONFIGURATION — MODIFIE CES VALEURS
+   ========================================================= */
+const WA_NUMBER = "2250700000000"; // ← Ton numéro WhatsApp au format international, SANS le "+"
+const SITE_NAME = "OCD";
+
+let selectedPlan = { name: "", price: "" };
+
+/* ============ HELPERS ============ */
+function openWhatsApp(message){
+  const url = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(message)}`;
+  window.open(url, "_blank", "noopener");
+}
+
+function scrollToId(id){
+  const el = document.getElementById(id);
+  if(el) el.scrollIntoView({behavior:"smooth", block:"start"});
+}
+
+function openModal(id){
+  document.getElementById(id).classList.add("open");
+  document.body.style.overflow = "hidden";
+}
+function closeModal(id){
+  document.getElementById(id).classList.remove("open");
+  document.body.style.overflow = "";
+  // reset states after animation
+  setTimeout(() => {
+    if(id === "modal-booking"){
+      document.getElementById("bookingFormWrap").style.display = "block";
+      document.getElementById("bookingConfirm").style.display = "none";
+      document.getElementById("bookingForm").reset();
+    }
+    if(id === "modal-payment"){
+      document.getElementById("paymentFormWrap").style.display = "block";
+      document.getElementById("paymentConfirm").style.display = "none";
+      document.getElementById("paymentForm").reset();
+    }
+    if(id === "modal-login"){
+      document.getElementById("loginWrap").style.display = "block";
+      document.getElementById("dashboardWrap").style.display = "none";
+      document.getElementById("loginForm").reset();
+    }
+  }, 350);
+}
+
+let toastTimer;
+function toast(msg){
+  const t = document.getElementById("toast");
+  t.textContent = msg;
+  t.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove("show"), 3200);
+}
+
+/* ============ HEADER SCROLL ============ */
+const header = document.getElementById("header");
+window.addEventListener("scroll", () => {
+  header.classList.toggle("scrolled", window.scrollY > 20);
+}, {passive:true});
+
+/* ============ MENU MOBILE ============ */
+const burger = document.getElementById("burger");
+const mobileMenu = document.getElementById("mobileMenu");
+burger.addEventListener("click", () => {
+  burger.classList.toggle("active");
+  mobileMenu.classList.toggle("open");
+  document.body.style.overflow = mobileMenu.classList.contains("open") ? "hidden" : "";
+});
+function closeMobile(){
+  burger.classList.remove("active");
+  mobileMenu.classList.remove("open");
+  document.body.style.overflow = "";
+}
+mobileMenu.querySelectorAll("a").forEach(a => a.addEventListener("click", closeMobile));
+
+/* ============ TABS (Comment ça marche) ============ */
+document.querySelectorAll(".tab").forEach(tab => {
+  tab.addEventListener("click", () => {
+    const target = tab.dataset.tab;
+    document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+    document.querySelectorAll(".tab-panel").forEach(p => p.classList.remove("active"));
+    tab.classList.add("active");
+    document.getElementById("panel-" + target).classList.add("active");
+  });
+});
+
+/* ============ FAQ ACCORDÉON ============ */
+document.querySelectorAll(".faq-q").forEach(q => {
+  q.addEventListener("click", () => {
+    const item = q.parentElement;
+    const answer = item.querySelector(".faq-a");
+    const isOpen = item.classList.contains("open");
+
+    document.querySelectorAll(".faq-item").forEach(i => {
+      i.classList.remove("open");
+      i.querySelector(".faq-a").style.maxHeight = null;
+    });
+
+    if(!isOpen){
+      item.classList.add("open");
+      answer.style.maxHeight = answer.scrollHeight + "px";
+    }
+  });
+});
+
+/* ============ REVEAL AU SCROLL ============ */
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add("visible");
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: "0px 0px -60px 0px" });
+
+document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+
+/* ============ FORMULAIRE CONTACT → WHATSAPP ============ */
+document.getElementById("contactForm").addEventListener("submit", (e) => {
+  e.preventDefault();
+  const name = document.getElementById("c-name").value.trim();
+  const phone = document.getElementById("c-phone").value.trim();
+  const subject = document.getElementById("c-subject").value;
+  const msg = document.getElementById("c-msg").value.trim();
+
+  const message =
+`Bonjour ${SITE_NAME} 👋
+
+*Nouveau message depuis le site*
+
+👤 Nom : ${name}
+📱 WhatsApp : ${phone}
+📌 Sujet : ${subject}
+
+💬 Message :
+${msg}`;
+
+  openWhatsApp(message);
+  toast("Redirection vers WhatsApp…");
+  e.target.reset();
+});
+
+/* ============ RÉSERVATION LIVE ============ */
+document.getElementById("bookingForm").addEventListener("submit", (e) => {
+  e.preventDefault();
+  const name = document.getElementById("b-name").value.trim();
+  const type = document.getElementById("b-type").value;
+  const service = document.getElementById("b-service").value.trim();
+  const date = document.getElementById("b-date").value;
+  const time = document.getElementById("b-time").value;
+  const desc = document.getElementById("b-desc").value.trim();
+  const link = document.getElementById("b-link").value.trim() || "Non renseigné";
+
+  const dateFmt = date ? new Date(date).toLocaleDateString("fr-FR", {weekday:"long", day:"numeric", month:"long", year:"numeric"}) : "";
+
+  const message =
+`Bonjour ${SITE_NAME} 👋
+
+*Demande de réservation de live*
+
+👤 Nom : ${name}
+🎤 Type de session : ${type}
+🛠️ Service : ${service}
+📅 Date souhaitée : ${dateFmt}
+🕐 Heure : ${time}
+🔗 Réseaux : ${link}
+
+📝 Description :
+${desc}
+
+Merci de me confirmer le créneau 🙏`;
+
+  openWhatsApp(message);
+
+  document.getElementById("bookingFormWrap").style.display = "none";
+  document.getElementById("bookingConfirm").style.display = "block";
+});
+
+/* ============ PAIEMENT / ABONNEMENT ============ */
+function choosePlan(name, price){
+  selectedPlan = { name, price };
+  document.getElementById("paymentSub").textContent = `Formule ${name} — ${price}`;
+  openModal("modal-payment");
+}
+
+document.getElementById("paymentForm").addEventListener("submit", (e) => {
+  e.preventDefault();
+  const name = document.getElementById("p-name").value.trim();
+  const phone = document.getElementById("p-phone").value.trim();
+  const method = document.getElementById("p-method").value;
+
+  const message =
+`Bonjour ${SITE_NAME} 👋
+
+*Demande d'abonnement*
+
+📦 Formule : ${selectedPlan.name}
+💰 Montant : ${selectedPlan.price}
+👤 Nom : ${name}
+📱 WhatsApp : ${phone}
+💳 Moyen de paiement : ${method}
+
+Merci de m'envoyer les instructions de paiement 🙏`;
+
+  openWhatsApp(message);
+
+  document.getElementById("paymentFormWrap").style.display = "none";
+  document.getElementById("paymentConfirm").style.display = "block";
+});
+
+/* ============ CONNEXION / ESPACE MEMBRES ============ */
+document.getElementById("loginForm").addEventListener("submit", (e) => {
+  e.preventDefault();
+  document.getElementById("loginWrap").style.display = "none";
+  document.getElementById("dashboardWrap").style.display = "block";
+  toast("Bienvenue dans ton espace membres (aperçu)");
+});
+
+function logoutPreview(){
+  document.getElementById("dashboardWrap").style.display = "none";
+  document.getElementById("loginWrap").style.display = "block";
+  toast("Tu es déconnecté");
+}
+
+/* ============ TABS DU DASHBOARD ============ */
+document.querySelectorAll("[data-dash]").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll("[data-dash]").forEach(b => b.classList.remove("active"));
+    document.querySelectorAll(".dash-panel").forEach(p => p.classList.remove("active"));
+    btn.classList.add("active");
+    document.getElementById(btn.dataset.dash).classList.add("active");
+  });
+});
+
+/* ============ FERMETURE MODALES (ESC + clic extérieur) ============ */
+document.addEventListener("keydown", (e) => {
+  if(e.key === "Escape"){
+    document.querySelectorAll(".modal.open").forEach(m => closeModal(m.id));
+    closeMobile();
+  }
+});
+
+/* ============ ANNÉE FOOTER ============ */
+document.getElementById("year").textContent = new Date().getFullYear();
+
+/* ============ DATE MINIMALE RÉSERVATION ============ */
+const dateInput = document.getElementById("b-date");
+const today = new Date().toISOString().split("T")[0];
+dateInput.setAttribute("min", today);
+</script>
+</body>
+</html>
